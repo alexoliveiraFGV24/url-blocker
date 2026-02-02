@@ -11,15 +11,11 @@ else
   exit 1
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-
-URLS_FILE="$ROOT_DIR/urls.txt"
 HOSTS_FILE="/etc/hosts"
-
 START_MARK="# >>> URL-BLOCKER START >>>"
 END_MARK="# <<< URL-BLOCKER END <<<"
 
+# Precisa ser root
 if [ "$EUID" -ne 0 ]; then
   echo "Execute com sudo"
   exit 1
@@ -27,14 +23,4 @@ fi
 
 sed -i "/$START_MARK/,/$END_MARK/d" "$HOSTS_FILE"
 
-{
-  echo ""
-  echo "$START_MARK"
-  while read -r url; do
-    [ -z "$url" ] && continue
-    echo "127.0.0.1 $url"
-  done < "$URLS_FILE"
-  echo "$END_MARK"
-} >> "$HOSTS_FILE"
-
-echo "URLs bloqueadas."
+echo "URLs desbloqueadas com sucesso."

@@ -1,0 +1,18 @@
+# Sistema
+REDIRECT_IP=
+HOSTS_FILE=
+
+# Horários
+BLOCK_START_HOUR=
+BLOCK_END_HOUR=
+
+# Projeto
+URLS_FILE=
+
+# Marcação no hosts
+BLOCK_START_MARK=#
+BLOCK_END_MARK=#
+
+# Logs
+LOG_FILE=
+ENABLE_LOG=true
